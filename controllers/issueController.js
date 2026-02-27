@@ -8,22 +8,29 @@ const createIssue = async (req, res) => {
       title,
       description,
       category,
-      city,        // ✅ added
-      area,        // ✅ added
-      state,       // ✅ added
       location,
       latitude,
       longitude,
       image,
     } = req.body;
 
+    // ✅ DUPLICATE CHECK (NEW ADDITION)
+    const existingIssue = await Issue.findOne({
+      location,
+      category,
+      status: { $ne: "Resolved" }
+    });
+
+    if (existingIssue) {
+      return res.status(400).json({
+        message: "Similar complaint already exists in this location."
+      });
+    }
+
     const issue = await Issue.create({
       title,
       description,
       category,
-      city,        // ✅ added
-      area,        // ✅ added
-      state,       // ✅ added
       location,
       latitude,
       longitude,
@@ -32,6 +39,7 @@ const createIssue = async (req, res) => {
     });
 
     res.status(201).json(issue);
+
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
