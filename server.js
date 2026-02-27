@@ -10,6 +10,8 @@ const app = express();
 connectDB();
 
 app.use(express.json());
+const otpRoutes = require("./routes/otpRoutes");
+app.use("/api", otpRoutes);
 
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/issues", require("./routes/issueRoutes"));
