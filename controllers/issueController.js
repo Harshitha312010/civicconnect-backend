@@ -8,6 +8,9 @@ const createIssue = async (req, res) => {
       title,
       description,
       category,
+      city,        // ✅ added
+      area,        // ✅ added
+      state,       // ✅ added
       location,
       latitude,
       longitude,
@@ -18,6 +21,9 @@ const createIssue = async (req, res) => {
       title,
       description,
       category,
+      city,        // ✅ added
+      area,        // ✅ added
+      state,       // ✅ added
       location,
       latitude,
       longitude,
@@ -54,6 +60,7 @@ const getIssues = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 
 // 🔹 Get Single Issue
 const getIssueById = async (req, res) => {
@@ -125,7 +132,6 @@ const getIssueStats = async (req, res) => {
     const inProgress = await Issue.countDocuments({ status: "In Progress" });
     const resolved = await Issue.countDocuments({ status: "Resolved" });
 
-    // Category counts
     const water = await Issue.countDocuments({ category: "Water" });
     const road = await Issue.countDocuments({ category: "Road" });
     const electricity = await Issue.countDocuments({ category: "Electricity" });
