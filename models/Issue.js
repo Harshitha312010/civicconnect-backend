@@ -18,6 +18,18 @@ const issueSchema = mongoose.Schema(
       required: true,
     },
 
+    city: {
+      type: String,
+    },
+
+    area: {
+      type: String,
+    },
+
+    state: {
+      type: String,
+    },
+
     location: {
       type: String,
       required: true,
