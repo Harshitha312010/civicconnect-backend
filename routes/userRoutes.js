@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { 
-  registerUser, 
+
+const {
+  registerUser,
   loginUser,
   updateProfile,
   deleteProfile,

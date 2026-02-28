@@ -20,14 +20,28 @@ const userSchema = mongoose.Schema(
 
     mobile: {
       type: String,
-      required: true,
     },
 
     role: {
       type: String,
-      enum: ["admin", "citizen"],
       default: "citizen",
     },
+
+    city: {
+      type: String,
+    },
+
+    state: {
+      type: String,
+    },
+
+    pincode: {
+      type: String,
+    },
+
+    photo: {
+      type: String,
+    }
   },
   {
     timestamps: true,
